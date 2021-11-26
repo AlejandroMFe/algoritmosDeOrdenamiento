@@ -12,9 +12,7 @@ namespace algoritmosDeOrdenamiento
 
     public class ArbolBinario
     {
-        public List<Nodo> arbol { get; }
         public Nodo Raiz { get; set; }
-        public ArbolBinario() => arbol = new List<Nodo>();
 
         public void AgregarNodo(int valor)
         {
@@ -23,15 +21,39 @@ namespace algoritmosDeOrdenamiento
 
             // Creo el nodo Raiz
             if (Raiz is null)
+            {
                 Raiz = nuevoNodo;
-
-            RecorrerNodos(Raiz, nuevoNodo);
-
+                return;
+            }
+            else
+                Inserta(Raiz, nuevoNodo);
         }
 
-        private void RecorrerNodos(Nodo raiz, Nodo nuevoNodo)
+        private void Inserta(Nodo nodo, Nodo nuevoNodo)
         {
-            
+            if (nodo.Valor < nuevoNodo.Valor)
+            {
+                if (nodo.Derecha is null)
+                {
+                    // Inserta el nuevoNodo a la derecha
+                    nodo.Derecha = nuevoNodo;
+                    return;
+                }
+                else
+                    Inserta(nodo.Derecha, nuevoNodo);
+            }
+            else
+            {
+                if (nodo.Izquierda is null)
+                {
+                    // Inserta el nuevoNodo a la izquierda
+                    nodo.Izquierda = nuevoNodo;
+                    return;
+                }
+                else
+                    Inserta(nodo.Izquierda, nuevoNodo);
+            }
+            return;
         }
     }
 }
