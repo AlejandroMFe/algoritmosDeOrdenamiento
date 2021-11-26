@@ -31,6 +31,7 @@ namespace algoritmosDeOrdenamiento
 
         private void Inserta(Nodo nodo, Nodo nuevoNodo)
         {
+            // Ir por Derecha
             if (nodo.Valor < nuevoNodo.Valor)
             {
                 if (nodo.Derecha is null)
@@ -42,6 +43,7 @@ namespace algoritmosDeOrdenamiento
                 else
                     Inserta(nodo.Derecha, nuevoNodo);
             }
+            // Ir por Izquierda
             else
             {
                 if (nodo.Izquierda is null)
